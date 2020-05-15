@@ -4,8 +4,7 @@
 using namespace std;
 vector<pair<int , int >> possibilities;
 vector<int> dp;
-void all_possibilities(vector<int> arr , int n , int l , int r)
-{
+void all_possibilities(vector<int> arr , int n , int l , int r){
     while (r < arr.size())
     {
         if (arr[l] == arr[r] && arr[l] == n )
@@ -22,10 +21,10 @@ void all_possibilities(vector<int> arr , int n , int l , int r)
         }
     }
 }
-int solve_part_2(vector<int> arr ,int ans = 0 )
-{
+int solve_part_2(vector<int> arr ,int ans = 0 ){
     int l = 0 , r = 0;
-    while (r < arr.size() ){
+    while (r < arr.size() )
+    {
         if (arr[l] == arr[r]){r++;}
         else
         {
