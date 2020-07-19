@@ -18,23 +18,23 @@ void definitions(){
 }
 using namespace std;
 /******************* This Code was written by : Omar Al-Jarrah ********************/
+vec < char > letters;
+
 int main() { definitions(); fastIO
-    int T;
-    cin >> T;
-    while (T--) {
-        int n;
-        cin >> n;
-        vector<int> cnt(n + 1);
-        for (int i = 0; i < n; ++i) {
-            int x;
-            cin >> x;
-            ++cnt[x];
+    for (int l = 97 ; l < 123 ; l++) { char c = l; letters.push_back(c); }
+    int T; cin >> T ;while (T--){
+        vec < char > answer;
+        int n, a, b;
+        cin >> n >> a >> b;
+        while (answer.size() < n){
+            for (int i = 0 ; i < b ; i++){
+                answer.push_back(letters[i]);
+                if (answer.size() == n) break;
+            }
         }
-        int mx = *max_element(cnt.begin(), cnt.end());
-        int diff = n + 1 - count(cnt.begin(), cnt.end(), 0);
-        cout << max(min(mx - 1, diff), min(mx, diff - 1)) << endl;
+        for (char i : answer) cout << i ;
+        cout << endl;
+        answer.clear();
     }
     return 0;
-
-
 }
