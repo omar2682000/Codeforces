@@ -1,53 +1,29 @@
 #include <bits/stdc++.h>
-void definitions(){
 #define ll long long
-#define vec vector
-#define dl double
-#define pi pair  < int , int >
-#define files_mode freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout);
-#define fl float
-#define PAIR make_pair
-#define INF (ll) 1e9
+#define pb push_back
+#define mp make_pair
 #define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-}
 using namespace std;
 
-/******************* This Code was written by : Omar Al-Jarrah ********************/
-
-vec < ll > divisors(ll n){
-    vec < ll > result;
-    for (ll i = 2 ; i <= sqrtl(n) ; i++ ){
-        if (!(n % i)) {
-            result.push_back(i);
-            if (n / i != i)     result.push_back((ll)(n / i));
-        }
-    }
-    sort(result.rbegin() , result.rend());
-    return result;
+int main(){ fastIO
+	int T ; cin >> T;int n, k; 
+	while (T--){
+		cin >> n >> k;
+		vector < int > div;
+		for (int i = 1 ; i * i <= n ; i++){
+			if (n%i == 0){
+				div.push_back(i);
+				if (n / i != i){
+					div.push_back(n / i);
+				}
+				}
+		}
+		int ans = 0;
+		sort(div.rbegin(),div.rend());
+		for (int i : div){
+			if (i <= k && i > ans)
+				ans = i;
+		}	cout << n / ans << endl;
+		div.clear();
+	}
 }
-
-ll solve(ll k , ll n , vec < ll > arr){
-    if ( k == 1 || (arr.size() == 0 && k < n))
-        return n;
-    if (k >= n)
-        return 1;
-    for (int i = 0 ; i < arr.size() ; i++){
-        if (arr[i] <= k){
-            return n / arr[i];
-        }
-    }
-    return n;
-}
-
-int main() { definitions(); fastIO
-
-    ll n , k , T;cin >> T;
-    vec < ll > div;
-    while (T--){
-        cin >> n >> k;
-        div = divisors(n);
-        cout << solve(k , n , div) << endl;
-    }
-
-
-return 0;}
